@@ -1,0 +1,85 @@
+{
+  "companyName": "Vimicx Inc.",
+  "settings": {
+    "totalAuthorizedShares": 15000000
+  },
+  "shareClasses": [
+    {
+      "id": "sc-common",
+      "name": "Common",
+      "type": "common",
+      "pricePerShare": 1
+    },
+    {
+      "id": "sc-seed",
+      "name": "Seed Preferred",
+      "type": "preferred",
+      "pricePerShare": 1.5
+    }
+  ],
+  "shareholders": [
+    {
+      "id": "sh-jason",
+      "name": "Jason Rapoport",
+      "type": "founder",
+      "shareClassId": "sc-common",
+      "shares": 4000000
+    },
+    {
+      "id": "sh-cto",
+      "name": "Elena Rostova",
+      "type": "founder",
+      "shareClassId": "sc-common",
+      "shares": 3500000
+    },
+    {
+      "id": "sh-alpha",
+      "name": "Alpha Ventures",
+      "type": "investor",
+      "shareClassId": "sc-seed",
+      "shares": 1000000
+    },
+    {
+      "id": "sh-employee-pool-allocated",
+      "name": "Allocated Options",
+      "type": "employee",
+      "shareClassId": "sc-common",
+      "shares": 500000
+    },
+    {
+      "id": "sh-employee-pool-unallocated",
+      "name": "Unallocated Option Pool",
+      "type": "employee",
+      "shareClassId": "sc-common",
+      "shares": 1000000
+    }
+  ],
+  "convertibleSecurities": [
+    {
+      "id": "conv-pioneer",
+      "name": "Pioneer SAFE",
+      "type": "safe_post_money",
+      "amount": 500000,
+      "valuationCap": 8000000,
+      "discountRate": 1
+    },
+    {
+      "id": "conv-horizon",
+      "name": "Horizon Notes",
+      "type": "convertible_note",
+      "amount": 250000,
+      "valuationCap": 6000000,
+      "discountRate": 0.8,
+      "interestRate": 0.06,
+      "issueDate": "2025-06-04"
+    },
+    {
+      "id": "conv-angel",
+      "name": "Angel SAFE",
+      "type": "safe_pre_money",
+      "amount": 100000,
+      "valuationCap": 5000000,
+      "discountRate": 0.85
+    }
+  ]
+}
