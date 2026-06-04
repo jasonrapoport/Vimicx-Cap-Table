@@ -3,8 +3,8 @@ import { simulateDilution } from '../utils/dilutionMath';
 import { Play, Calculator, Terminal, TrendingDown, RefreshCw } from 'lucide-react';
 
 export default function DilutionSimulator({ data }) {
-  const [preMoneyValuation, setPreMoneyValuation] = useState(12000000); // $12M
-  const [investmentAmount, setInvestmentAmount] = useState(3000000);   // $3M
+  const [preMoneyValuation, setPreMoneyValuation] = useState('12000000'); // $12M
+  const [investmentAmount, setInvestmentAmount] = useState('3000000');   // $3M
   const [targetOptionPoolPercent, setTargetOptionPoolPercent] = useState(15); // 15%
   const [optionPoolIncreaseType, setOptionPoolIncreaseType] = useState('dilute_pre_round');
   const [conversionDate, setConversionDate] = useState(new Date().toISOString().split('T')[0]);
@@ -13,9 +13,12 @@ export default function DilutionSimulator({ data }) {
   // Recalculate simulation results when inputs or base data changes
   useEffect(() => {
     if (data && data.shareholders && data.shareholders.length > 0) {
+      const parsedValuation = preMoneyValuation === '' ? 0 : Number(preMoneyValuation);
+      const parsedInvestment = investmentAmount === '' ? 0 : Number(investmentAmount);
+
       const simResults = simulateDilution(data, {
-        preMoneyValuation: Number(preMoneyValuation),
-        investmentAmount: Number(investmentAmount),
+        preMoneyValuation: parsedValuation,
+        investmentAmount: parsedInvestment,
         targetOptionPoolPercent: Number(targetOptionPoolPercent) / 100,
         optionPoolIncreaseType,
         conversionDate
@@ -47,7 +50,7 @@ export default function DilutionSimulator({ data }) {
               type="number"
               className="form-input"
               value={preMoneyValuation}
-              onChange={(e) => setPreMoneyValuation(Math.max(10000, Number(e.target.value)))}
+              onChange={(e) => setPreMoneyValuation(e.target.value)}
               step="100000"
             />
           </div>
@@ -58,7 +61,7 @@ export default function DilutionSimulator({ data }) {
               type="number"
               className="form-input"
               value={investmentAmount}
-              onChange={(e) => setInvestmentAmount(Math.max(0, Number(e.target.value)))}
+              onChange={(e) => setInvestmentAmount(e.target.value)}
               step="100000"
             />
           </div>
